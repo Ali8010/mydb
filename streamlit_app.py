@@ -4,7 +4,7 @@ from datetime import date
 import streamlit as st
 from streamlit.components.v1 import iframe
 
-st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
+st.set_page_config(layout="centered", page_icon="!!", page_title="Diploma Generator")
 st.title("اصدار سند قبض")
 
 st.write(
@@ -29,7 +29,7 @@ course = form.selectbox(
     ["ايجار مقدم", "تأمين مقدم"],
     index=0,
 )
-grade = form.slider("Grade", 500, 3500, 1000)
+grade = form.slider("How much", 500, 3500, 1000)
 submit = form.form_submit_button("اطبع السند")
 
 if submit:
