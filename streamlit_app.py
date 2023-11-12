@@ -8,7 +8,7 @@ st.set_page_config(layout="centered", page_icon="!!", page_title="Receipt Vouche
 st.title("Receipt Voucher اصدار سند قبض")
 
 st.write(
-    "نطبع لك سند القبض باسرع و اسهل طريقة"
+    " اطبع سند القبض باسرع و اسهل طريقة و لا تنسى توقيعك أو الختم"
 )
 
 left, right = st.columns(2)
