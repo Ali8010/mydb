@@ -5,10 +5,10 @@ import streamlit as st
 from streamlit.components.v1 import iframe
 
 st.set_page_config(layout="centered", page_icon="🎓", page_title="Diploma Generator")
-st.title("🎓 Diploma PDF Generator")
+st.title("اصدار سند قبض")
 
 st.write(
-    "This app shows you how you can use Streamlit to make a PDF generator app in just a few lines of code!"
+    "نطبع لك سند القبض باسرع و اسهل طريقة"
 )
 
 left, right = st.columns(2)
@@ -21,16 +21,16 @@ env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 template = env.get_template("template.html")
 
 
-left.write("Fill in the data:")
+left.write("ارجو كتابة المعلومات الصحيحة")
 form = left.form("template_form")
-student = form.text_input("Student name")
+student = form.text_input("أسم المكرم")
 course = form.selectbox(
     "Choose course",
-    ["Report Generation in Streamlit", "Advanced Cryptography"],
+    ["ايجار مقدم", "تأمين مقدم"],
     index=0,
 )
-grade = form.slider("Grade", 1, 100, 60)
-submit = form.form_submit_button("Generate PDF")
+grade = form.slider("Grade", 500, 3500, 1000)
+submit = form.form_submit_button("اطبع السند")
 
 if submit:
     html = template.render(
@@ -43,7 +43,7 @@ if submit:
     pdf = pdfkit.from_string(html, False)
     st.balloons()
 
-    right.success("🎉 Your diploma was generated!")
+    right.success("🎉 تم اصدار سند القبض")
     # st.write(html, unsafe_allow_html=True)
     # st.write("")
     right.download_button(
