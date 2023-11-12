@@ -36,7 +36,7 @@ if submit:
     html = template.render(
         student=student,
         course=course,
-        grade=f"{grade}/100",
+        grade=f"{grade}/Saudi Riyal",
         date=date.today().strftime("%B %d, %Y"),
     )
 
