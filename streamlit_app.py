@@ -4,8 +4,8 @@ from datetime import date
 import streamlit as st
 from streamlit.components.v1 import iframe
 
-st.set_page_config(layout="centered", page_icon="!!", page_title="Diploma Generator")
-st.title("اصدار سند قبض")
+st.set_page_config(layout="centered", page_icon="!!", page_title="Receipt Voucher")
+st.title("Receipt Voucher اصدار سند قبض")
 
 st.write(
     "نطبع لك سند القبض باسرع و اسهل طريقة"
@@ -13,7 +13,7 @@ st.write(
 
 left, right = st.columns(2)
 
-right.write("Here's the template we'll be using:")
+right.write(" Here's the template we'll be using:")
 
 right.image("template.png", width=300)
 
@@ -21,16 +21,16 @@ env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
 template = env.get_template("template.html")
 
 
-left.write("ارجو كتابة المعلومات الصحيحة")
+left.write("Please fill in  ارجو كتابة المعلومات الصحيحة")
 form = left.form("template_form")
-student = form.text_input("أسم المكرم")
+student = form.text_input("Name أسم المكرم")
 course = form.selectbox(
     "Choose course",
-    ["ايجار مقدم", "تأمين مقدم"],
+    ["Rent", "Insurance"],
     index=0,
 )
-grade = form.slider("How much", 500, 3500, 1000)
-submit = form.form_submit_button("اطبع السند")
+grade = form.slider("How much قيمة المبلغ", 500, 5000, 1000)
+submit = form.form_submit_button("Print اطبع السند")
 
 if submit:
     html = template.render(
@@ -43,7 +43,7 @@ if submit:
     pdf = pdfkit.from_string(html, False)
     st.balloons()
 
-    right.success("🎉 تم اصدار سند القبض")
+    right.success("🎉 Congratulations Your Receipt was issued تم اصدار سند القبض")
     # st.write(html, unsafe_allow_html=True)
     # st.write("")
     right.download_button(
